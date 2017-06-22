@@ -1,8 +1,28 @@
+const crypto = require('crypto')
 const knex = require('knex')(require('./knexfile'))
 
+function randomString() {
+    return crypto.randomBytes(4).toString('hex')
+}
+
+function saltHashPassword(password) {
+    const salt = randomString()
+    const hash = crypto.createHmac('sha512', salt).update(password)
+
+    return {
+        salt,
+        hash: hash.digest('hex')
+    }
+}
+
 module.exports = {
+    saltHashPassword,
     createUser({username, password}) {
         console.log(`Adding user ${username} with password ${password}`)
-        return knex('user').insert({username, password})
+        const {salt, hash} = saltHashPassword(password)
+        return knex('user').insert({
+            username, 
+            salt,
+            encrypted_password: hash})
     }
 }
