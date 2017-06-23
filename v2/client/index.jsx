@@ -2,10 +2,17 @@ console.log('I am alive!');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import reducer from './reducer';
 
-import Login from './components/login';
+const store = createStore(reducer);
+
+import Login from './containers/login';
 
 ReactDOM.render(
-    <Login login={()=>console.log('Login again')}/>,
+    <Provider store={store} >
+        <Login />
+    </Provider>,
     document.getElementById('app')
 )

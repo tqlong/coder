@@ -1,6 +1,6 @@
-import React from 'react'
-import {Form, Button} from 'react-bootstrap'
-import {FieldGroup} from './helper'
+import React from 'react';
+import {Form, Button} from 'react-bootstrap';
+import {FieldGroup} from './helper';
 
 export default class Login extends React.PureComponent {
 
@@ -13,13 +13,15 @@ export default class Login extends React.PureComponent {
     }
 
     handleUsernameChange(event) {
+        if (this.props.setUsername) this.props.setUsername(event.target.value);
     }
 
     handlePasswordChange(event) {
+        if (this.props.setPassword) this.props.setPassword(event.target.value);
     }
 
     handleLoginSubmit(event) {
-        if (this.props.login) this.props.login();
+        if (this.props.loginSubmit) this.props.loginSubmit();
         event.preventDefault();
     }
 
