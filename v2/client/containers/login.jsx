@@ -1,7 +1,7 @@
 import Login from '../components/login';
 import {connect} from 'react-redux';
 
-import {setUsername, setPassword, loginSubmit} from '../reducer/login';
+import {setUsername, setPassword, loginSubmit} from '../reducers/login';
 
 const actions = {
     setUsername,

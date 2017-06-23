@@ -26,12 +26,10 @@ export default class Login extends React.PureComponent {
     }
 
     render() {
-        return <div>
-            <Form onSubmit={this.handleLoginSubmit}>
-                <FieldGroup id="username" type="text" label="Username" placeholder="Username" onChange={this.handleUsernameChange} />{' '}
-                <FieldGroup id="password" type="password" label="Password" placeholder="Password" onChange={this.handlePasswordChange} />{' '}
+        return <Form onSubmit={this.handleLoginSubmit} className="form-login">
+                <FieldGroup id="username" type="text" label="Username" placeholder="Username" onChange={this.handleUsernameChange} />
+                <FieldGroup id="password" type="password" label="Password" placeholder="Password" onChange={this.handlePasswordChange} />
                 <Button bsStyle="primary" type="submit">Login</Button>
-            </Form>
-        </div>;
+            </Form>;
     }
 }

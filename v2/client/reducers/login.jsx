@@ -26,7 +26,7 @@ function nextLoginState(state, action) {
 
 export function login(state = Map(), action) {
     const newState = nextLoginState(state, action);
-    console.log(state.toJS(), action, newState.toJS());
+    //console.log(state.toJS(), action, newState.toJS());
     return newState;
 }
 
